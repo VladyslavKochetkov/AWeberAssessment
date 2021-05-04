@@ -1,4 +1,4 @@
-import { Box, Button, TextField } from "@material-ui/core";
+import { Box, Button, makeStyles, TextField } from "@material-ui/core";
 import * as React from "react";
 import { PasswordValidator } from "../../Validators/Password";
 import { useDispatch } from "react-redux";
@@ -6,8 +6,22 @@ import { alert } from "../../state/reducers/snackbar";
 import { Link } from "react-router-dom";
 import LeftSide from "./LeftSide";
 
+const useStyles = makeStyles(() => ({
+  submitButton: {
+    background: "linear-gradient(45deg, #3e6695, #311c62)",
+    color: "white !important",
+    transition: "150ms ease-in all",
+
+    "&.Mui-disabled": {
+      background: "gray",
+      opacity: 0.7,
+    },
+  },
+}));
+
 const StrictlyCompliant: React.FC = () => {
   const dispatch = useDispatch();
+  const classes = useStyles();
   const [passwordValue, setPasswordValue] = React.useState("");
   const [confirmationPasswordValue, setConfirmationPasswordValue] = React.useState("");
   const passwordValidator = React.useRef(new PasswordValidator(passwordValue)).current;
@@ -15,8 +29,9 @@ const StrictlyCompliant: React.FC = () => {
     <div className="w-full flex">
       <LeftSide>
         <Box className="text-lg mt-4">
-          This submission tries to be strictly compliant with the assignment request. There is another alternative
-          version that use live auto-validation.
+          This version of the submission tries to be strictly compliant with the assignment. There is an alternative
+          version that uses live validation and displays what is incorrect, only allowing a submission once all fields
+          are valid.
         </Box>
         <div className="mt-2">
           <Link to="/AWeberAssessment/">
@@ -70,6 +85,9 @@ const StrictlyCompliant: React.FC = () => {
             color="primary"
             fullWidth
             className="mt-2"
+            classes={{
+              root: classes.submitButton,
+            }}
             onClick={() => {
               if (!passwordValidator.meetsLengthRequirements()) {
                 return dispatch(
@@ -107,7 +125,7 @@ const StrictlyCompliant: React.FC = () => {
                 return dispatch(alert({ message: "Passwords do not match", alertSeverity: "error" }));
               }
 
-              dispatch(alert({ message: "Passwords are valid!" }));
+              dispatch(alert({ message: "Password is valid!" }));
             }}
           >
             Submit

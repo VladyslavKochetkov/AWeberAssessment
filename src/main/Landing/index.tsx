@@ -1,12 +1,29 @@
-import { Box, Button, TextField, Tooltip } from "@material-ui/core";
+import { Box, Button, makeStyles, TextField, Tooltip } from "@material-ui/core";
 import * as React from "react";
 import InputValidationToggle from "../../component/InputValidationToggle";
 import { PasswordValidator } from "../../Validators/Password";
 import { Info } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import LeftSide from "../StrictlyCompliant/LeftSide";
+import { useDispatch } from "react-redux";
+import { alert } from "../../state/reducers/snackbar";
+
+const useStyles = makeStyles(() => ({
+  submitButton: {
+    background: "linear-gradient(45deg, #3e6695, #311c62)",
+    color: "white !important",
+    transition: "150ms ease-in all",
+
+    "&.Mui-disabled": {
+      background: "gray",
+      opacity: 0.7,
+    },
+  },
+}));
 
 const Landing: React.FC = () => {
+  const dispatch = useDispatch();
+  const classes = useStyles();
   const [passwordValue, setPasswordValue] = React.useState("");
   const [confirmationPasswordValue, setConfirmationPasswordValue] = React.useState("");
   const passwordValidator = React.useRef(new PasswordValidator(passwordValue)).current;
@@ -113,6 +130,12 @@ const Landing: React.FC = () => {
             fullWidth
             className="mt-2"
             disabled={!passwordValidator.isValidPassword() || passwordValue !== confirmationPasswordValue}
+            classes={{
+              root: classes.submitButton,
+            }}
+            onClick={() => {
+              dispatch(alert({ message: "Password is valid!" }));
+            }}
           >
             Submit
           </Button>
