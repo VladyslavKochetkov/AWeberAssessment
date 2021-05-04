@@ -7,10 +7,10 @@ import StrictlyCompliant from "./main/StrictlyCompliant";
 const Router: React.FC = () => (
   <BrowserRouter>
     <Switch>
-      <Route path="/" exact>
+      <Route path="/AWeberAssessment/" exact>
         <Landing />
       </Route>
-      <Route path="/strictlyCompliant">
+      <Route path="/AWeberAssessment/strictlyCompliant">
         <StrictlyCompliant />
       </Route>
       <Route path="*">

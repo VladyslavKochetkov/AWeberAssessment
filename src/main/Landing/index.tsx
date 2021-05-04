@@ -18,7 +18,7 @@ const Landing: React.FC = () => {
           submit, the submit button is disabled until all of the mandatory criteria are met.
         </Box>
         <div className="mt-2">
-          <Link to="/strictlyCompliant">
+          <Link to="/AWeberAssessment/strictlyCompliant">
             <Button
               variant="outlined"
               color="primary"
@@ -34,7 +34,7 @@ const Landing: React.FC = () => {
       </LeftSide>
       <div className="flex-3 flex items-center justify-center flex-col">
         <div className="flex items-center gap-2">
-          <img src="/logo192.png" height={50} width={50} />
+          <img src="/AWeberAssessment/logo192.png" height={50} width={50} />
           <div className="mt-2">
             <Box className="font-medium text-3xl leading-4">AWeber</Box>
             <Box className="text-xl">Assessment</Box>

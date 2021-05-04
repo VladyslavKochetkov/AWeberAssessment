@@ -24,7 +24,7 @@ const Error404: React.FC = () => {
         <Box className={clsx("text-3xl text-white", classes.textShadow)}>
           The page you're looking for doesn't exist.
         </Box>
-        <Link to="/">
+        <Link to="/AWeberAssessment/">
           <Button
             variant="outlined"
             color="primary"
