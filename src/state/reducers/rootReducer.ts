@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-
-const rootReducer = combineReducers({});
+import snackbar from "./snackbar";
+const rootReducer = combineReducers({ snackbar });
 export default rootReducer;
 export type RootState = ReturnType<typeof rootReducer>;

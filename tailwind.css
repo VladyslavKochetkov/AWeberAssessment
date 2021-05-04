@@ -12,3 +12,10 @@ button::-moz-focus-inner {
 ::-moz-focus-inner {
   border: 0;
 }
+
+#root {
+  min-height: 100vh;
+  min-width: 100vw;
+  overflow-x: hidden;
+  display: flex;
+}

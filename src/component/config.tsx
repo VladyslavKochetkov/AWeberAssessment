@@ -3,6 +3,7 @@ import React from "react";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistor, store } from "../state/store";
+import GlobalSnackBar from "./Snackbar";
 
 if (process.env.NODE_ENV === "development") {
   document.getElementById("root")?.classList.add("debug-screens");
@@ -16,6 +17,7 @@ const Config: React.FC = ({ children }) => (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <PersistGate loading={null} persistor={persistor}>
+          <GlobalSnackBar />
           {children}
         </PersistGate>
       </ThemeProvider>
