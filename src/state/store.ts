@@ -7,6 +7,7 @@ const persistedReducer = persistReducer(
   {
     key: "vlad-boiler",
     storage,
+    blacklist: ["snackbar"],
   },
   rootReducer,
 );
